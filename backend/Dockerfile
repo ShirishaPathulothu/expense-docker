@@ -5,8 +5,8 @@ RUN addgroup -S expense && adduser -S expense -G expense
 RUN mkdir /opt/server
 RUN chown -R expense:expense /opt/server
 WORKDIR /opt/server
-COPY package.json .
-COPY *.js .
+COPY --chown=expense:expense package.json ./
+COPY --chown=expense:expense *.js ./
 RUN npm install
 USER expense
 CMD ["node", "index.js"] 
